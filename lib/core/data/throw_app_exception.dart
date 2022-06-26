@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/constants.dart';
+import '../constants/strings.dart';
 import '../domain/app_exception/app_exception.dart';
 
 AppException throwAppException(exception) {

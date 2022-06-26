@@ -1,0 +1,14 @@
+{
+  "createAccount": "Create Account",
+  "email": "Email",
+  "password": "Password",
+  "passwordConfirmation": "Password Confirmation",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+
+  "login": "login",
+  "forgetPassword": "Forget Password?",
+  "or": "Or",
+  "ifYouDontHaveAnAccountRegisterNow": "if you don't have an account register now",
+  "registerNewAccount": "Register New Account"
+}

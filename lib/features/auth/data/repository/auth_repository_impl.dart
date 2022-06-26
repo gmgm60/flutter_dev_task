@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_dev_task/core/domain/failures/app_failure.dart';
 import 'package:flutter_dev_task/features/auth/data/mappers/login_mapper.dart';
+import 'package:flutter_dev_task/features/auth/data/mappers/register_mapper.dart';
 import 'package:flutter_dev_task/features/auth/data/mappers/user_mapper.dart';
 import 'package:flutter_dev_task/features/auth/domain/entities/login_params/login_params.dart';
 import 'package:flutter_dev_task/features/auth/domain/entities/user/user.dart';
@@ -11,6 +12,7 @@ import '../../../../core/data/return_app_failure.dart';
 import '../../../../core/domain/app_exception/app_exception.dart';
 import '../../domain/data/data_sources/remote/auth_remote_datasource.dart';
 import '../../domain/data/repository/auth_repository.dart';
+import '../../domain/entities/register_param/register_param.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepoImpl extends AuthRepository {
@@ -34,6 +36,18 @@ class AuthRepoImpl extends AuthRepository {
   }
 
   @override
+  Future<Either<AppFailure, User?>> isLogin() async {
+    try {
+      final userModel = await _authRemoteDatasource.isLogin();
+      _logger.v(userModel);
+      return right(userModel?.toEntity);
+    } on AppException catch (e) {
+      _logger.v(e.toString());
+      return left(returnAppFailure(e));
+    }
+  }
+
+  @override
   Future<Either<AppFailure, Unit>> logout() async {
     try {
       final response = await _authRemoteDatasource.logout();
@@ -46,10 +60,11 @@ class AuthRepoImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<AppFailure, User>> register({required User user}) async {
+  Future<Either<AppFailure, User>> register(
+      {required RegisterParam register}) async {
     try {
       final userModel =
-          await _authRemoteDatasource.register(userModel: user.toModel);
+          await _authRemoteDatasource.register(registerModel: register.toModel);
       _logger.v(userModel);
       return right(userModel.toEntity);
     } on AppException catch (e) {

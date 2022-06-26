@@ -1,0 +1,14 @@
+{
+  "createAccount": "إنشاء حساب",
+  "email": "Email",
+  "password": "Password",
+  "passwordConfirmation": "Password Confirmation",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+
+  "login": "تسجيل دخول",
+  "forgetPassword": "هل نسيت كلمة السر؟",
+  "or": "أو",
+  "ifYouDontHaveAnAccountRegisterNow": "إذا لم يكن لديك حسام قم بالتسجيل",
+  "registerNewAccount": "تسجيل حساب جديد"
+}

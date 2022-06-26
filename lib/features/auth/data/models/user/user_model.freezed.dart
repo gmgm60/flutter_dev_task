@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+UserModel _$UserModelFromJson(Map<String, dynamic> json) {
+  return _UserModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$UserModel {
   String get id => throw _privateConstructorUsedError;
@@ -22,6 +26,7 @@ mixin _$UserModel {
   String get email => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UserModelCopyWith<UserModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -138,7 +143,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_UserModel implements _UserModel {
   _$_UserModel(
       {required this.id,
@@ -146,6 +151,9 @@ class _$_UserModel implements _UserModel {
       required this.lastName,
       required this.email,
       this.imageUrl});
+
+  factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
+      _$$_UserModelFromJson(json);
 
   @override
   final String id;
@@ -175,6 +183,7 @@ class _$_UserModel implements _UserModel {
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -188,6 +197,11 @@ class _$_UserModel implements _UserModel {
   @override
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>
       __$$_UserModelCopyWithImpl<_$_UserModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UserModelToJson(this);
+  }
 }
 
 abstract class _UserModel implements UserModel {
@@ -197,6 +211,9 @@ abstract class _UserModel implements UserModel {
       required final String lastName,
       required final String email,
       final String? imageUrl}) = _$_UserModel;
+
+  factory _UserModel.fromJson(Map<String, dynamic> json) =
+      _$_UserModel.fromJson;
 
   @override
   String get id => throw _privateConstructorUsedError;

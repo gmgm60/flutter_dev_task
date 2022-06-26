@@ -1,4 +1,6 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_dev_task/features/auth/data/data_sources/remote/auth_firebase_service.dart';
+import 'package:flutter_dev_task/features/auth/data/models/register/register_model.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/data/throw_app_exception.dart';
@@ -22,27 +24,27 @@ class AuthRemoteDatasourceImpl extends AuthRemoteDatasource {
   }
 
   @override
-  Future<String> logout() async {
+  Future<Unit> logout() async {
     try {
-      return await _authApiService.logout();
+      return await _authFirebaseService.logout();
     } catch (e) {
       throw throwAppException(e);
     }
   }
 
   @override
-  Future<UserModel> register({required UserModel userModel}) async {
+  Future<UserModel> register({required RegisterModel registerModel}) async {
     try {
-      return await _authApiService.register(registerModel: registerModel);
+      return await _authFirebaseService.register(registerModel: registerModel);
     } catch (e) {
       throw throwAppException(e);
     }
   }
 
   @override
-  Future<String> resetPassword({required String email}) async {
+  Future<UserModel?> isLogin() async{
     try {
-      return await _authApiService.resetPassword(email: email);
+      return await _authFirebaseService.isLogin();
     } catch (e) {
       throw throwAppException(e);
     }
