@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_task/core/constants/colors.dart';
 
-final lightTheme = ThemeData(fontFamily: 'Almaria',
-  textTheme: const TextTheme(headline5: TextStyle(color: titleColor,)),
+final lightTheme = ThemeData(
+  fontFamily: 'Almarai',
+  scaffoldBackgroundColor: mainBackground,
+  textTheme: const TextTheme(
+      headline6: TextStyle(
+    color: titleColor,
+        fontWeight: FontWeight.bold,
+  )),
   primarySwatch: Colors.blue,
 );

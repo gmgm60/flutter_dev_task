@@ -29,11 +29,11 @@ class CodegenLoader extends AssetLoader{
 };
 static const Map<String,dynamic> ar = {
   "createAccount": "إنشاء حساب",
-  "email": "Email",
-  "password": "Password",
-  "passwordConfirmation": "Password Confirmation",
-  "firstName": "First Name",
-  "lastName": "Last Name",
+  "email": "البريد الالكترونى",
+  "password": "كلمة المرور",
+  "passwordConfirmation": "تأكيد كلمة المرور",
+  "firstName": "الاسم الأول",
+  "lastName": "الاسم الأخير",
   "login": "تسجيل دخول",
   "forgetPassword": "هل نسيت كلمة السر؟",
   "or": "أو",
