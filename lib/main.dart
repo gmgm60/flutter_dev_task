@@ -18,11 +18,18 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
  await configureInjection();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-   MyApp({Key? key}) : super(key: key);
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {

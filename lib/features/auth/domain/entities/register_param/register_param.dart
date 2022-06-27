@@ -12,4 +12,9 @@ class RegisterParam {
     required this.password,
     required this.passwordConfirmation,
   });
+
+  @override
+  String toString() {
+    return 'RegisterParam{firstName: $firstName, lastName: $lastName, email: $email, password: $password, passwordConfirmation: $passwordConfirmation}';
+  }
 }

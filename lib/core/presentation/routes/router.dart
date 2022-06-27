@@ -5,7 +5,7 @@ import 'package:flutter_dev_task/features/auth/presentation/pages/start_page.dar
 
 @MaterialAutoRouter(replaceInRouteName: 'Page,Route', routes: [
   AutoRoute(path: '/', page: StartPage),
-  AutoRoute(page: LoginPage),
+  AutoRoute(page: LoginPage,initial: true),
   AutoRoute(page: RegisterPage),
 ])
 class $AppRouter {}

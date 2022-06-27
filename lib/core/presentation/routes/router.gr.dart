@@ -28,19 +28,23 @@ class AppRouter extends _i4.RootStackRouter {
           routeData: routeData, child: const _i1.StartPage());
     },
     LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.LoginPage());
+          routeData: routeData, child: _i2.LoginPage(key: args.key));
     },
     RegisterRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
       return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.RegisterPage());
+          routeData: routeData, child: _i3.RegisterPage(key: args.key));
     }
   };
 
   @override
   List<_i4.RouteConfig> get routes => [
         _i4.RouteConfig(StartRoute.name, path: '/'),
-        _i4.RouteConfig(LoginRoute.name, path: '/login-page'),
+        _i4.RouteConfig(LoginRoute.name, path: '/'),
         _i4.RouteConfig(RegisterRoute.name, path: '/register-page')
       ];
 }
@@ -55,16 +59,41 @@ class StartRoute extends _i4.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginPage]
-class LoginRoute extends _i4.PageRouteInfo<void> {
-  const LoginRoute() : super(LoginRoute.name, path: '/login-page');
+class LoginRoute extends _i4.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i5.Key? key})
+      : super(LoginRoute.name, path: '/', args: LoginRouteArgs(key: key));
 
   static const String name = 'LoginRoute';
 }
 
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key});
+
+  final _i5.Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key}';
+  }
+}
+
 /// generated route for
 /// [_i3.RegisterPage]
-class RegisterRoute extends _i4.PageRouteInfo<void> {
-  const RegisterRoute() : super(RegisterRoute.name, path: '/register-page');
+class RegisterRoute extends _i4.PageRouteInfo<RegisterRouteArgs> {
+  RegisterRoute({_i5.Key? key})
+      : super(RegisterRoute.name,
+            path: '/register-page', args: RegisterRouteArgs(key: key));
 
   static const String name = 'RegisterRoute';
+}
+
+class RegisterRouteArgs {
+  const RegisterRouteArgs({this.key});
+
+  final _i5.Key? key;
+
+  @override
+  String toString() {
+    return 'RegisterRouteArgs{key: $key}';
+  }
 }

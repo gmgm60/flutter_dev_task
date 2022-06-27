@@ -68,7 +68,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
           textInputAction: TextInputAction.done,
           //inputFormatters: <TextInputFormatter>[LengthLimitingTextInputFormatter(4,maxLengthEnforcement: MaxLengthEnforcement.none)],
           decoration: InputDecoration(
-            filled: true,
+                        filled: true,
             fillColor: textFormBackground,
             contentPadding:
             const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -87,7 +87,10 @@ class _CustomFormFieldState extends State<CustomFormField> {
                     ? Icons.visibility
                     : Icons.visibility_off))
                 : null,
-            border: OutlineInputBorder(
+            border: OutlineInputBorder(borderSide: BorderSide(color: textFormBackground, width: 0.0),
+              borderRadius: BorderRadius.all(Radius.circular(widget.radius)),
+            ),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: textFormBackground, width: 0.0),
               borderRadius: BorderRadius.all(Radius.circular(widget.radius)),
             ),
           ),

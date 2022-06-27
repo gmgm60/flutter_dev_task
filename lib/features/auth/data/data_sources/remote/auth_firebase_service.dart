@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dev_task/features/auth/data/models/login/login_model.dart';
 import 'package:flutter_dev_task/features/auth/data/models/register/register_model.dart';
 import 'package:flutter_dev_task/features/auth/data/models/user/user_model.dart';
@@ -22,11 +23,17 @@ class AuthFirebaseService {
   }
 
   Future<UserModel> register({required RegisterModel registerModel}) async {
-    UserCredential userCredential =
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    debugPrint("email = ${registerModel.email},pass=${registerModel.password}");
+    UserCredential userCredential = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
       email: registerModel.email,
       password: registerModel.password,
-    );
+    )
+        .onError((error, stackTrace) async {
+      debugPrint("error = $error");
+      throw error!;
+    });
+    debugPrint("userCredential = $userCredential");
 
     final uid = userCredential.user!.uid;
     final UserModel userModel = UserModel(
@@ -54,6 +61,5 @@ class AuthFirebaseService {
       //TODO
     }
     return null;
-
   }
 }

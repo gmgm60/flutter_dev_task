@@ -7,6 +7,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Widget? icon;
   final Color backGroundColor;
   final Color textColor;
+  final double radios;
 
   const CustomElevatedButton({
     Key? key,
@@ -14,20 +15,20 @@ class CustomElevatedButton extends StatelessWidget {
     required this.text,
     this.icon,
     required this.backGroundColor,
-    required this.textColor,
+    required this.textColor, this.radios =20,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(20.0),
       child: ElevatedButton(
         onPressed: onTap,
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(backGroundColor),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0))),
+                  borderRadius: BorderRadius.circular(radios))),
         ),
         child: Padding(
           padding: const EdgeInsets.all(4.0),

@@ -8,7 +8,7 @@ import '../domain/app_exception/app_exception.dart';
 
 AppException throwAppException(exception) {
   String? errorMessage; //= somethingWentWrong;
-  // debugPrint(exception.toString());
+   debugPrint(exception.toString());
   if (exception is DioError) {
     // debugPrint('Dio Error with code: ${exception.response?.statusCode}');
     try {

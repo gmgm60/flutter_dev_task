@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dev_task/core/presentation/routes/router.gr.dart';
 import 'package:flutter_dev_task/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter_dev_task/features/auth/presentation/pages/register_page.dart';
 
@@ -34,7 +36,7 @@ class StartPage extends StatelessWidget {
           },
           login: (login) {
             WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginPage()));
+              AutoRouter.of(context).navigate(LoginRoute());
             });
             return const Scaffold(
               body: SizedBox(
@@ -44,7 +46,7 @@ class StartPage extends StatelessWidget {
           },
           orElse: () {
             WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>RegisterPage()));
+              AutoRouter.of(context).navigate(LoginRoute());
             });
             return const Scaffold(
               body: SizedBox(
