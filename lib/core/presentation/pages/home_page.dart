@@ -12,19 +12,21 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<String> titles = [
       LocaleKeys.home,
-      LocaleKeys.profile
+      LocaleKeys.profile,
+      LocaleKeys.saved
     ];
     return AutoTabsRouter.tabBar(
       routes: const [
         PostsRoute(),
         ProfileRoute(),
+       // FavPostsRoute(),
       ],
-      builder: 
+      builder:
           (BuildContext context, Widget child, TabController tabController) {
         return Scaffold(
           appBar: AppBar(
             title: Text(titles[tabController.index].tr()),
-            bottom: TabBar(controller: tabController, tabs:  [
+            bottom:TabBar(controller: tabController, tabs:  [
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(LocaleKeys.home.tr()),

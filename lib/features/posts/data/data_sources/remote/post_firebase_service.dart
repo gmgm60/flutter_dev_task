@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_dev_task/features/posts/data/models/post/post_model.dart';
 import 'package:injectable/injectable.dart';
@@ -24,7 +25,8 @@ class PostFirebaseService {
   }
 
   Future<List<PostModel>> getFavPosts() async {
-    final data = await FirebaseFirestore.instance.collection('posts').get();
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    final data = await FirebaseFirestore.instance.collection('posts').where('savedUsers',arrayContains:userId).get();
 
     final List<PostModel> postModels =
         data.docs.map((e) => PostModel.fromJson(e.data())).toList();

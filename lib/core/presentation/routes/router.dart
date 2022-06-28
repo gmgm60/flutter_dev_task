@@ -5,12 +5,14 @@ import 'package:flutter_dev_task/features/auth/presentation/pages/register_page.
 import 'package:flutter_dev_task/features/auth/presentation/pages/start_page.dart';
 import 'package:flutter_dev_task/features/posts/presentation/pages/posts_page.dart';
 
+import '../../../features/posts/presentation/pages/fav_posts_page.dart';
 import '../pages/home_page.dart';
 
 @MaterialAutoRouter(replaceInRouteName: 'Page,Route', routes: [
   AutoRoute(path: '/', page: StartPage),
   AutoRoute(page: LoginPage, initial: true),
   AutoRoute(page: RegisterPage),
+  AutoRoute(page: FavPostsPage),
   AutoRoute(
     page: HomePage,
     children: [

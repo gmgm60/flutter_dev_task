@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dev_task/features/posts/domain/entities/post/post.dart';
 import 'package:flutter_dev_task/features/posts/presentation/cubit/posts_cubit.dart';
 import 'package:flutter_dev_task/features/posts/presentation/widgets/add_post.dart';
 import 'package:flutter_dev_task/features/posts/presentation/widgets/post_card.dart';
