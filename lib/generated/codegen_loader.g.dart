@@ -25,7 +25,18 @@ class CodegenLoader extends AssetLoader{
   "forgetPassword": "Forget Password?",
   "or": "Or",
   "ifYouDontHaveAnAccountRegisterNow": "if you don't have an account register now",
-  "registerNewAccount": "Register New Account"
+  "registerNewAccount": "Register New Account",
+  "uploadImage": "Upload image",
+  "addComment": "Add comment about the image",
+  "postText": "This text is an example of text that can be replaced in the same space. This text was generated from the text generator",
+  "profile": "my account",
+  "home": "Home",
+  "saved": "Saved",
+  "favorites": "Favorite",
+  "settings": "Settings",
+  "editProfile": "modify my data",
+  "publish": "Publish",
+  "cancel": "Cancel"
 };
 static const Map<String,dynamic> ar = {
   "createAccount": "إنشاء حساب",
@@ -38,7 +49,18 @@ static const Map<String,dynamic> ar = {
   "forgetPassword": "هل نسيت كلمة السر؟",
   "or": "أو",
   "ifYouDontHaveAnAccountRegisterNow": "إذا لم يكن لديك حسام قم بالتسجيل",
-  "registerNewAccount": "تسجيل حساب جديد"
+  "registerNewAccount": "تسجيل حساب جديد",
+  "uploadImage": "رفع صورة",
+  "addComment": "أكتب تعليقا حول الصورة",
+  "postText": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص",
+  "profile": "حسابى",
+  "home": "الرئيسية",
+  "saved": "المحفوظات",
+  "favorites": "المفضلة",
+  "settings": "الإعدادات",
+  "editProfile": "تعديل بياناتي",
+  "publish": "نشر",
+  "cancel": "تجاهل"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ar": ar};
 }

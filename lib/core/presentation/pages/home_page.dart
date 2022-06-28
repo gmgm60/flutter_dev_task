@@ -1,32 +1,37 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dev_task/core/presentation/routes/router.gr.dart';
 import 'package:flutter_dev_task/core/presentation/widgets/app_drawer.dart';
+import 'package:flutter_dev_task/generated/locale_keys.g.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
+    final List<String> titles = [
+      LocaleKeys.home,
+      LocaleKeys.profile
+    ];
     return AutoTabsRouter.tabBar(
       routes: const [
         PostsRoute(),
         ProfileRoute(),
       ],
-      builder:
+      builder: 
           (BuildContext context, Widget child, TabController tabController) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(tabController.index.toString()),
-            bottom: TabBar(controller: tabController, tabs: const [
+            title: Text(titles[tabController.index].tr()),
+            bottom: TabBar(controller: tabController, tabs:  [
               Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Text("الرئيسية"),
+                padding: const EdgeInsets.all(15.0),
+                child: Text(LocaleKeys.home.tr()),
               ),
-              Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Text("حسابى"),
+               Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text(LocaleKeys.profile.tr()),
               ),
             ]),
           ),

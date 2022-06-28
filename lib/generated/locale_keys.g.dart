@@ -12,5 +12,16 @@ abstract class  LocaleKeys {
   static const or = 'or';
   static const ifYouDontHaveAnAccountRegisterNow = 'ifYouDontHaveAnAccountRegisterNow';
   static const registerNewAccount = 'registerNewAccount';
+  static const uploadImage = 'uploadImage';
+  static const addComment = 'addComment';
+  static const postText = 'postText';
+  static const profile = 'profile';
+  static const home = 'home';
+  static const saved = 'saved';
+  static const favorites = 'favorites';
+  static const settings = 'settings';
+  static const editProfile = 'editProfile';
+  static const publish = 'publish';
+  static const cancel = 'cancel';
 
 }

@@ -7,6 +7,7 @@ import 'package:flutter_dev_task/core/presentation/theme.dart';
 import 'package:flutter_dev_task/di/injectable.dart';
 import 'package:flutter_dev_task/features/auth/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:flutter_dev_task/features/auth/presentation/pages/start_page.dart';
+import 'package:flutter_dev_task/features/posts/presentation/cubit/posts_cubit.dart';
 
 import 'core/presentation/routes/router.gr.dart';
 import 'firebase_options.dart';
@@ -36,6 +37,7 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<AuthCubit>()),
+        BlocProvider(create: (context) => getIt<PostsCubit>()),
       ],
       child: EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('ar')],

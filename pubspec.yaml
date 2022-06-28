@@ -46,6 +46,8 @@ dependencies:
   auto_route: ^4.0.1
   flutter_bloc: ^8.0.1
   easy_localization: ^3.0.1
+  image_picker: ^0.8.5+3
+  firebase_storage: ^10.2.18
 
 
 dev_dependencies:

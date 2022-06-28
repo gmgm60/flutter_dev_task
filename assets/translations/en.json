@@ -10,5 +10,17 @@
   "forgetPassword": "Forget Password?",
   "or": "Or",
   "ifYouDontHaveAnAccountRegisterNow": "if you don't have an account register now",
-  "registerNewAccount": "Register New Account"
+  "registerNewAccount": "Register New Account",
+
+  "uploadImage": "Upload image",
+  "addComment": "Add comment about the image",
+  "postText": "This text is an example of text that can be replaced in the same space. This text was generated from the text generator",
+  "profile": "my account",
+  "home": "Home",
+  "saved": "Saved",
+  "favorites": "Favorite",
+  "settings": "Settings",
+  "editProfile": "modify my data",
+  "publish": "Publish",
+  "cancel":"Cancel"
 }

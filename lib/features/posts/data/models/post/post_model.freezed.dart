@@ -20,8 +20,12 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostModel {
+  String get id => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
+  List<String> get likes => throw _privateConstructorUsedError;
+  List<String> get savedUsers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +37,13 @@ mixin _$PostModel {
 abstract class $PostModelCopyWith<$Res> {
   factory $PostModelCopyWith(PostModel value, $Res Function(PostModel) then) =
       _$PostModelCopyWithImpl<$Res>;
-  $Res call({String imageUrl, String text});
+  $Res call(
+      {String id,
+      String userId,
+      String imageUrl,
+      String text,
+      List<String> likes,
+      List<String> savedUsers});
 }
 
 /// @nodoc
@@ -46,10 +56,22 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
+    Object? userId = freezed,
     Object? imageUrl = freezed,
     Object? text = freezed,
+    Object? likes = freezed,
+    Object? savedUsers = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -58,6 +80,14 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      likes: likes == freezed
+          ? _value.likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      savedUsers: savedUsers == freezed
+          ? _value.savedUsers
+          : savedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -68,7 +98,13 @@ abstract class _$$_PostModelCopyWith<$Res> implements $PostModelCopyWith<$Res> {
           _$_PostModel value, $Res Function(_$_PostModel) then) =
       __$$_PostModelCopyWithImpl<$Res>;
   @override
-  $Res call({String imageUrl, String text});
+  $Res call(
+      {String id,
+      String userId,
+      String imageUrl,
+      String text,
+      List<String> likes,
+      List<String> savedUsers});
 }
 
 /// @nodoc
@@ -83,10 +119,22 @@ class __$$_PostModelCopyWithImpl<$Res> extends _$PostModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
+    Object? userId = freezed,
     Object? imageUrl = freezed,
     Object? text = freezed,
+    Object? likes = freezed,
+    Object? savedUsers = freezed,
   }) {
     return _then(_$_PostModel(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -95,6 +143,14 @@ class __$$_PostModelCopyWithImpl<$Res> extends _$PostModelCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      likes: likes == freezed
+          ? _value._likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      savedUsers: savedUsers == freezed
+          ? _value._savedUsers
+          : savedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -102,19 +158,44 @@ class __$$_PostModelCopyWithImpl<$Res> extends _$PostModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_PostModel implements _PostModel {
-  _$_PostModel({required this.imageUrl, required this.text});
+  _$_PostModel(
+      {required this.id,
+      required this.userId,
+      required this.imageUrl,
+      required this.text,
+      required final List<String> likes,
+      required final List<String> savedUsers})
+      : _likes = likes,
+        _savedUsers = savedUsers;
 
   factory _$_PostModel.fromJson(Map<String, dynamic> json) =>
       _$$_PostModelFromJson(json);
 
   @override
+  final String id;
+  @override
+  final String userId;
+  @override
   final String imageUrl;
   @override
   final String text;
+  final List<String> _likes;
+  @override
+  List<String> get likes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_likes);
+  }
+
+  final List<String> _savedUsers;
+  @override
+  List<String> get savedUsers {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_savedUsers);
+  }
 
   @override
   String toString() {
-    return 'PostModel(imageUrl: $imageUrl, text: $text)';
+    return 'PostModel(id: $id, userId: $userId, imageUrl: $imageUrl, text: $text, likes: $likes, savedUsers: $savedUsers)';
   }
 
   @override
@@ -122,16 +203,25 @@ class _$_PostModel implements _PostModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PostModel &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.text, text));
+            const DeepCollectionEquality().equals(other.text, text) &&
+            const DeepCollectionEquality().equals(other._likes, _likes) &&
+            const DeepCollectionEquality()
+                .equals(other._savedUsers, _savedUsers));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(userId),
       const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(text));
+      const DeepCollectionEquality().hash(text),
+      const DeepCollectionEquality().hash(_likes),
+      const DeepCollectionEquality().hash(_savedUsers));
 
   @JsonKey(ignore: true)
   @override
@@ -146,16 +236,28 @@ class _$_PostModel implements _PostModel {
 
 abstract class _PostModel implements PostModel {
   factory _PostModel(
-      {required final String imageUrl,
-      required final String text}) = _$_PostModel;
+      {required final String id,
+      required final String userId,
+      required final String imageUrl,
+      required final String text,
+      required final List<String> likes,
+      required final List<String> savedUsers}) = _$_PostModel;
 
   factory _PostModel.fromJson(Map<String, dynamic> json) =
       _$_PostModel.fromJson;
 
   @override
+  String get id => throw _privateConstructorUsedError;
+  @override
+  String get userId => throw _privateConstructorUsedError;
+  @override
   String get imageUrl => throw _privateConstructorUsedError;
   @override
   String get text => throw _privateConstructorUsedError;
+  @override
+  List<String> get likes => throw _privateConstructorUsedError;
+  @override
+  List<String> get savedUsers => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_PostModelCopyWith<_$_PostModel> get copyWith =>

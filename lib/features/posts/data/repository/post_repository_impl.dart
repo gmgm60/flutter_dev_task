@@ -10,7 +10,7 @@ import 'package:logger/logger.dart';
 import '../../../../core/data/return_app_failure.dart';
 import '../../../../core/domain/app_exception/app_exception.dart';
 
-@injectable
+@Injectable(as: PostRepository)
 class PostRepositoryImpl extends PostRepository {
   final Logger _logger;
   final PostRemoteDataSource _postRemoteDataSource;
@@ -41,11 +41,22 @@ class PostRepositoryImpl extends PostRepository {
   }
 
   @override
-  Future<Either<AppFailure, List<Post>>> getPosts()async {
+  Future<Either<AppFailure, List<Post>>> getPosts() async {
     try {
       final postsModel = await _postRemoteDataSource.getPosts();
       final posts = postsModel.map((postModel) => postModel.toEntity).toList();
       return right(posts);
+    } on AppException catch (e) {
+      _logger.v(e.toString());
+      return left(returnAppFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> updatePost(Post post) async{
+    try {
+      await _postRemoteDataSource.updatePost(post.toModel);
+      return right(unit);
     } on AppException catch (e) {
       _logger.v(e.toString());
       return left(returnAppFailure(e));

@@ -7,13 +7,11 @@ import 'package:injectable/injectable.dart';
 import '../entities/post/post.dart';
 
 @injectable
-class AddNewPostUseCase extends UseCase<Unit, Post> {
+class UpdatePostUseCase extends UseCase<Unit, Post> {
   final PostRepository _postRepository;
-
-  AddNewPostUseCase(this._postRepository);
-
+  UpdatePostUseCase(this._postRepository);
   @override
   Future<Either<AppFailure, Unit>> call(Post params) {
-    return _postRepository.addPost(params);
+    return _postRepository.updatePost(params);
   }
 }

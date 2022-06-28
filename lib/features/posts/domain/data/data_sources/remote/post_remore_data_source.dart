@@ -6,5 +6,8 @@ abstract class PostRemoteDataSource {
 
   Future<List<PostModel>> getFavPosts();
 
-  Future<Unit> addPost(PostModel post);
+  Future<Unit> addPost(PostModel postModel);
+
+  Future<Unit> updatePost(PostModel postModel);
+
 }

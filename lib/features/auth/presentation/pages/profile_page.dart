@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dev_task/core/constants/colors.dart';
 import 'package:flutter_dev_task/features/auth/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:flutter_dev_task/generated/assets.dart';
+import 'package:flutter_dev_task/generated/locale_keys.g.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -39,8 +41,8 @@ class ProfilePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
-                children: const [
-                  CircleAvatar(
+                children:  [
+                  const CircleAvatar(
                       radius: 24,
                       backgroundColor: buttonBackground,
                       child: Icon(
@@ -48,13 +50,13 @@ class ProfilePage extends StatelessWidget {
                         size: 24,
                         color: Colors.white,
                       )),
-                  SizedBox(height: 5),
-                  Text('تعديل بياناتى'),
+                  const SizedBox(height: 5),
+                  Text(LocaleKeys.editProfile.tr()),
                 ],
               ),
               Column(
-                children: const [
-                  CircleAvatar(
+                children:  [
+                  const CircleAvatar(
                       radius: 24,
                       backgroundColor: buttonBackground,
                       child: Icon(
@@ -62,13 +64,13 @@ class ProfilePage extends StatelessWidget {
                         size: 24,
                         color: Colors.white,
                       )),
-                  SizedBox(height: 5),
-                  Text('المفضلة'),
+                  const SizedBox(height: 5),
+                  Text(LocaleKeys.favorites.tr()),
                 ],
               ),
               Column(
-                children: const [
-                  CircleAvatar(
+                children:  [
+                  const CircleAvatar(
                       radius: 24,
                       backgroundColor: buttonBackground,
                       child: Icon(
@@ -76,8 +78,8 @@ class ProfilePage extends StatelessWidget {
                         size: 24,
                         color: Colors.white,
                       )),
-                  SizedBox(height: 5),
-                  Text('الإعدادات'),
+                  const SizedBox(height: 5),
+                  Text(LocaleKeys.settings.tr()),
                 ],
               ),
             ],
