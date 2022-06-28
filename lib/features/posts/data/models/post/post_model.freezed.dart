@@ -14,11 +14,16 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+PostModel _$PostModelFromJson(Map<String, dynamic> json) {
+  return _PostModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$PostModel {
   String get imageUrl => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PostModelCopyWith<PostModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -95,9 +100,12 @@ class __$$_PostModelCopyWithImpl<$Res> extends _$PostModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_PostModel implements _PostModel {
   _$_PostModel({required this.imageUrl, required this.text});
+
+  factory _$_PostModel.fromJson(Map<String, dynamic> json) =>
+      _$$_PostModelFromJson(json);
 
   @override
   final String imageUrl;
@@ -118,6 +126,7 @@ class _$_PostModel implements _PostModel {
             const DeepCollectionEquality().equals(other.text, text));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -128,12 +137,20 @@ class _$_PostModel implements _PostModel {
   @override
   _$$_PostModelCopyWith<_$_PostModel> get copyWith =>
       __$$_PostModelCopyWithImpl<_$_PostModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PostModelToJson(this);
+  }
 }
 
 abstract class _PostModel implements PostModel {
   factory _PostModel(
       {required final String imageUrl,
       required final String text}) = _$_PostModel;
+
+  factory _PostModel.fromJson(Map<String, dynamic> json) =
+      _$_PostModel.fromJson;
 
   @override
   String get imageUrl => throw _privateConstructorUsedError;

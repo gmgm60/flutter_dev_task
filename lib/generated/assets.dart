@@ -6,5 +6,11 @@ class Assets {
   static const String fontsAlmaraiExtraBold = 'assets/fonts/Almarai_ExtraBold.ttf';
   static const String fontsAlmaraiLight = 'assets/fonts/Almarai_Light.ttf';
   static const String fontsAlmaraiRegular = 'assets/fonts/Almarai_Regular.ttf';
+  static const String iconsLike = 'assets/icons/like.png';
+  static const String imagesHeader = 'assets/images/header.png';
+  static const String imagesUser = 'assets/images/user.png';
+  static const String imagesUser2 = 'assets/images/user2.webp';
+  static const String translationsAr = 'assets/translations/ar.json';
+  static const String translationsEn = 'assets/translations/en.json';
 
 }

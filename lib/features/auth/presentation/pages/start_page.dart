@@ -36,7 +36,7 @@ class StartPage extends StatelessWidget {
           },
           login: (login) {
             WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              AutoRouter.of(context).navigate(LoginRoute());
+              AutoRouter.of(context).navigate(const HomeRoute());
             });
             return const Scaffold(
               body: SizedBox(
