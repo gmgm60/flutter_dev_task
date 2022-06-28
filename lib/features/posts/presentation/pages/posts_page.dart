@@ -12,7 +12,25 @@ class PostsPage extends StatelessWidget {
     return Scaffold(
 
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      floatingActionButton: FloatingActionButton(onPressed: () {  },child: const Icon(Icons.add)),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        showDialog(context: context, builder: (context){
+          return  Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 20),
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(5))),
+              child: Column(mainAxisSize: MainAxisSize.min,
+
+                children: const [
+                  Text('dialog'),
+                ],
+              ),
+            ),
+          );
+        });
+
+      },child: const Icon(Icons.add)),
       body: ListView.builder(
           itemCount: 5, itemBuilder: (context, index) => PostCard(post: post,)),
     );
