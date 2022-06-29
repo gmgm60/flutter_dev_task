@@ -25,28 +25,11 @@ class AuthRemoteDatasourceImpl extends AuthRemoteDatasource {
     }
   }
 
-  @override
-  Future<Unit> logout() async {
-    try {
-      return await _authFirebaseService.logout();
-    } catch (e) {
-      throw throwAppException(e);
-    }
-  }
 
   @override
   Future<UserModel> register({required RegisterModel registerModel}) async {
     try {
       return await _authFirebaseService.register(registerModel: registerModel);
-    } catch (e) {
-      throw throwAppException(e);
-    }
-  }
-
-  @override
-  Future<UserModel?> isLogin() async{
-    try {
-      return await _authFirebaseService.isLogin();
     } catch (e) {
       throw throwAppException(e);
     }

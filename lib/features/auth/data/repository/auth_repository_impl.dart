@@ -10,6 +10,7 @@ import 'package:logger/logger.dart';
 
 import '../../../../core/data/return_app_failure.dart';
 import '../../../../core/domain/app_exception/app_exception.dart';
+import '../../domain/data/data_sources/local/auth_local_datasource.dart';
 import '../../domain/data/data_sources/remote/auth_remote_datasource.dart';
 import '../../domain/data/repository/auth_repository.dart';
 import '../../domain/entities/register_param/register_param.dart';
@@ -18,8 +19,9 @@ import '../../domain/entities/register_param/register_param.dart';
 class AuthRepoImpl extends AuthRepository {
   final Logger _logger;
   final AuthRemoteDatasource _authRemoteDatasource;
+  final AuthLocalDatasource _authLocalDatasource;
 
-  AuthRepoImpl(this._logger, this._authRemoteDatasource);
+  AuthRepoImpl(this._logger, this._authRemoteDatasource, this._authLocalDatasource);
 
   @override
   Future<Either<AppFailure, User>> login(
@@ -28,6 +30,7 @@ class AuthRepoImpl extends AuthRepository {
       final userModel =
           await _authRemoteDatasource.login(loginModel: loginParam.toModel);
       _logger.v(userModel);
+      await _authLocalDatasource.saveUser(userModel: userModel);
       return right(userModel.toEntity);
     } on AppException catch (e) {
       _logger.v(e.toString());
@@ -38,7 +41,7 @@ class AuthRepoImpl extends AuthRepository {
   @override
   Future<Either<AppFailure, User?>> isLogin() async {
     try {
-      final userModel = await _authRemoteDatasource.isLogin();
+      final userModel = await _authLocalDatasource.isLogin();
       _logger.v(userModel);
       return right(userModel?.toEntity);
     } on AppException catch (e) {
@@ -50,7 +53,7 @@ class AuthRepoImpl extends AuthRepository {
   @override
   Future<Either<AppFailure, Unit>> logout() async {
     try {
-      final response = await _authRemoteDatasource.logout();
+      final response = await _authLocalDatasource.logout();
       _logger.v(response);
       return right(unit);
     } on AppException catch (e) {
@@ -66,6 +69,7 @@ class AuthRepoImpl extends AuthRepository {
       final userModel =
           await _authRemoteDatasource.register(registerModel: register.toModel);
       _logger.v(userModel);
+      await _authLocalDatasource.saveUser(userModel: userModel);
       return right(userModel.toEntity);
     } on AppException catch (e) {
       _logger.v(e.toString());

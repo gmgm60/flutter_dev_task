@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dev_task/core/domain/use_case/use_case.dart';
+import 'package:flutter_dev_task/features/posts/domain/use_cases/get_local_posts_use_case.dart';
 import 'package:flutter_dev_task/features/posts/domain/use_cases/update_post_use_case.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
@@ -13,9 +14,11 @@ import 'posts_state.dart';
 class PostsCubit extends Cubit<PostsState> {
   final Logger _logger;
   final GetPostsUseCase _getPostUseCase;
+  final GetLocalPostsUseCase _getLocalPostsUseCase;
   final GetFavPostsUseCase _getFavPostsUseCase;
   final AddNewPostUseCase _addPostUseCase;
   final UpdatePostUseCase _postLikeUseCase;
+
   final List<Post> posts = [];
   final List<Post> favPosts = [];
 
@@ -24,12 +27,25 @@ class PostsCubit extends Cubit<PostsState> {
     this._getPostUseCase,
     this._getFavPostsUseCase,
     this._addPostUseCase,
-    this._postLikeUseCase,
+    this._postLikeUseCase, this._getLocalPostsUseCase,
   ) : super(PostsState.init());
 
   Future<void> getPosts() async {
+    await getLocalPosts();
     emit(PostsState.loading());
     final result = await _getPostUseCase(NoParams());
+    result.fold((failure) {
+      _logger.v(failure.message);
+      emit(PostsState.error(message: failure.message));
+    }, (posts) {
+      this.posts.clear();
+      this.posts.addAll(posts);
+      emit(PostsState.postsLoaded());
+    });
+  }
+  Future<void> getLocalPosts() async {
+    emit(PostsState.loading());
+    final result = await _getLocalPostsUseCase(NoParams());
     result.fold((failure) {
       _logger.v(failure.message);
       emit(PostsState.error(message: failure.message));
