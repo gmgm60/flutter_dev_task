@@ -24,5 +24,29 @@
   "editProfile": "modify my data",
   "publish": "Publish",
   "cancel":"Cancel",
-  "logout": "Logout"
+  "logout": "Logout",
+
+  "validation": {
+    "invalid_password": "Invalid password.",
+    "invalid_login_info": "Invalid Login info!",
+    "invalid_register_email": "The email has already been taken",
+    "password_miss_match": "Passwords do not match!",
+    "password_short": "Password is too short!",
+    "password_long": "Password is too long!",
+    "invalid_email": "Invalid email",
+    "invalid_phone": "Invalid phone",
+    "required": "This field is required",
+    "short": "This {value} is too short!",
+    "long": "This {value} is too long!",
+    "min_length": {
+      "1": "Field can't be less than 1 letter",
+      "2": "Field can't be less than 2 letters",
+      "else": "Field can't be less than {{{value}} letters"
+    },
+    "max_length": {
+      "1": "Field can't be more than 1 letter",
+      "2": "Field can't be mor than 2 letters",
+      "else": "Field can't be ore than {{{value}} letters"
+    }
+  }
 }
