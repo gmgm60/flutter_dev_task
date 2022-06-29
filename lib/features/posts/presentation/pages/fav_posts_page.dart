@@ -5,6 +5,7 @@ import 'package:flutter_dev_task/core/presentation/widgets/app_drawer.dart';
 import 'package:flutter_dev_task/features/posts/presentation/cubit/posts_cubit.dart';
 import 'package:flutter_dev_task/features/posts/presentation/widgets/post_card.dart';
 import 'package:flutter_dev_task/generated/locale_keys.g.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 import '../cubit/posts_state.dart';
 
@@ -32,6 +33,17 @@ class _FavPostsPageState extends State<FavPostsPage> {
       ),
       body: BlocBuilder<PostsCubit, PostsState>(
         builder: (context, state) {
+          if(state is Loading && postsCubit.favPosts.isEmpty){
+            return const Center(
+              child: SizedBox(width: 100,
+                child: LoadingIndicator(
+                  indicatorType: Indicator.ballPulseSync,
+                  colors: [Colors.blue,Colors.deepOrange,Colors.grey,Colors.white],
+                  strokeWidth: 1,
+                ),
+              ),
+            );
+          }
           return ListView.builder(
               itemCount: postsCubit.favPosts.length,
               itemBuilder: (context, index) =>
