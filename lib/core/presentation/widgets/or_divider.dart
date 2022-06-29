@@ -13,7 +13,7 @@ class OrDivider extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Container(
-              color: Colors.black,
+              color: Colors.black26,
               height: 1.0,
             ),
           ),
@@ -23,7 +23,7 @@ class OrDivider extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Container(
-              color: Colors.black,
+              color: Colors.black26,
               height: 1.0,
             ),
           ),

@@ -38,104 +38,107 @@ class _AddPostState extends State<AddPost> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: double.infinity,
-                height: 200,
-                decoration: BoxDecoration(
-                  color: mainBackground,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: GestureDetector(
-                  onTap: () async {
-                    await getImage();
-                    setState(() {});
-                  },
-                  child: imagePath == null
-                      ? Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.camera_alt,
-                              color: textFormBackground,
-                              size: 80,
-                            ),
-                            Text(LocaleKeys.uploadImage.tr()),
-                          ],
-                        )
-                      : Image.file(
-                          File(imagePath!),
-                          width: double.infinity,
-                          fit: BoxFit.fitWidth,
-                        ),
-                ),
+    return AlertDialog(
+      contentPadding: const EdgeInsets.all(10),
+      // padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
+      content: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: double.infinity,
+              height: 200,
+              decoration: BoxDecoration(
+                color: mainBackground,
+                borderRadius: BorderRadius.circular(10),
               ),
-              const SizedBox(height: 30),
-              Text(LocaleKeys.addComment.tr()),
-              const SizedBox(height: 20),
-              TextFormField(
-                initialValue: text,
-                textInputAction: TextInputAction.done,
-                maxLines: 3,
-                minLines: 3,
+              child: GestureDetector(
+                onTap: () async {
+                  await getImage();
+                  setState(() {});
+                },
+                child: imagePath == null
+                    ? Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.camera_alt,
+                            color: textFormBackground,
+                            size: 80,
+                          ),
+                          Text(LocaleKeys.uploadImage.tr(),style: Theme.of(context).textTheme.bodyText1!.copyWith(color: iconsColor)),
+                        ],
+                      )
+                    : Image.file(
+                        File(imagePath!),
+                        fit: BoxFit.fitWidth,
+                      ),
               ),
-              const SizedBox(height: 20),
-              BlocBuilder<PostsCubit, PostsState>(builder: (context, state) {
-                return state.maybeMap(
-                  orElse: () => const SizedBox.shrink(),
-                  loading: (_) => const LinearProgressIndicator(),
-                  postAdded: (_) {
-                    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            ),
+            const SizedBox(height: 30),
+            Text(LocaleKeys.addComment.tr(),style: Theme.of(context).textTheme.caption,),
+            TextFormField(
+              initialValue: text,
+              textInputAction: TextInputAction.done,
+              maxLines: 3,
+              minLines: 3,
+              onChanged: (String? text) {
+                this.text = text ?? "";
+              },
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            const SizedBox(height: 20),
+            BlocBuilder<PostsCubit, PostsState>(builder: (context, state) {
+              return state.maybeMap(
+                orElse: () => const SizedBox.shrink(),
+                loading: (_) => const LinearProgressIndicator(),
+                postAdded: (_) {
+                  WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                    AutoRouter.of(context).pop();
+                  });
+                  return const SizedBox.shrink();
+                },
+                error: (error) => Text(error.message),
+              );
+            }),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                    onPressed: () {
                       AutoRouter.of(context).pop();
-                    });
-                    return const SizedBox.shrink();
-                  },
-                  error: (error) => Text(error.message),
-                );
-              }),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        AutoRouter.of(context).pop();
-                      },
-                      child: Text(
-                        LocaleKeys.cancel.tr(),
-                        style: const TextStyle(color: buttonBackground),
-                      )),
-                  ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateColor.resolveWith(
-                              (states) => buttonBackground)),
-                      onPressed: () async {
-                        if (imagePath != null) {
-                          final userId = context.read<AuthCubit>().user!.id;
-                          final Post post = Post(id: '',
-                              userId: userId,
-                              imageUrl: imagePath!,
-                              text: text,
-                              likes: [], savedUsers: []);
-                          await context
-                              .read<PostsCubit>()
-                              .addNewPost(post: post);
-                        }
-                      },
-                      child: Text(LocaleKeys.publish.tr())),
-                ],
-              )
-            ],
-          ),
+                    },
+                    child: Text(
+                      LocaleKeys.cancel.tr(),
+                      style: const TextStyle(color: buttonBackground),
+                    )),
+                ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateColor.resolveWith(
+                            (states) => buttonBackground)),
+                    onPressed: () async {
+                      if (imagePath != null) {
+                        final userId = context.read<AuthCubit>().user!.id;
+                        final Post post = Post(
+                            id: '',
+                            userId: userId,
+                            imageUrl: imagePath!,
+                            text: text,
+                            likes: [],
+                            savedUsers: []);
+                        await context.read<PostsCubit>().addNewPost(post: post);
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 5),
+                      child: Text(LocaleKeys.publish.tr()),
+                    )),
+              ],
+            )
+          ],
         ),
       ),
     );

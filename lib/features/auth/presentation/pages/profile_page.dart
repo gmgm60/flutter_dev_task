@@ -19,23 +19,28 @@ class ProfilePage extends StatelessWidget {
             alignment: Alignment.topCenter,
             children: [
               const SizedBox(height: 240 + 75),
-              Image.asset(
-                Assets.imagesHeader,
-                height: 240,
-                fit: BoxFit.fitWidth,
-                width: double.infinity,
+              Stack(
+                children: [
+                  Image.asset(
+                    Assets.imagesHeader,
+                    height: 240,
+                    fit: BoxFit.fitWidth,
+                    width: double.infinity,
+                  ),
+                  Container(color: Colors.black26,width: double.infinity,height: 240),
+                ],
               ),
               const Positioned(
                   bottom: 0,
                   child: CircleAvatar(
-                      radius: 75,
+                      radius: 75,backgroundColor: Colors.transparent,
                       backgroundImage: AssetImage(Assets.imagesUser2))),
             ],
           ),
-          const SizedBox(height: 30),
-          Text("${user.firstName} ${user.lastName}"),
-          const SizedBox(height: 10),
-          Text(user.email),
+          const SizedBox(height: 45),
+          Text("${user.firstName} ${user.lastName}",style: Theme.of(context).textTheme.headline6),
+          const SizedBox(height: 5),
+          Text(user.email,style: Theme.of(context).textTheme.caption,),
           const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -51,21 +56,7 @@ class ProfilePage extends StatelessWidget {
                         color: Colors.white,
                       )),
                   const SizedBox(height: 5),
-                  Text(LocaleKeys.editProfile.tr()),
-                ],
-              ),
-              Column(
-                children:  [
-                  const CircleAvatar(
-                      radius: 24,
-                      backgroundColor: buttonBackground,
-                      child: Icon(
-                        Icons.star,
-                        size: 24,
-                        color: Colors.white,
-                      )),
-                  const SizedBox(height: 5),
-                  Text(LocaleKeys.favorites.tr()),
+                  Text(LocaleKeys.editProfile.tr(),style: Theme.of(context).textTheme.subtitle2),
                 ],
               ),
               Column(
@@ -79,9 +70,24 @@ class ProfilePage extends StatelessWidget {
                         color: Colors.white,
                       )),
                   const SizedBox(height: 5),
-                  Text(LocaleKeys.settings.tr()),
+                  Text(LocaleKeys.settings.tr(),style: Theme.of(context).textTheme.subtitle2),
                 ],
               ),
+              Column(
+                children:  [
+                  const CircleAvatar(
+                      radius: 24,
+                      backgroundColor: buttonBackground,
+                      child: Icon(
+                        Icons.star,
+                        size: 24,
+                        color: Colors.white,
+                      )),
+                  const SizedBox(height: 5),
+                  Text(LocaleKeys.favorites.tr(),style: Theme.of(context).textTheme.subtitle2),
+                ],
+              ),
+
             ],
           ),
         ],

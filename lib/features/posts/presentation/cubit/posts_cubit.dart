@@ -78,7 +78,7 @@ class PostsCubit extends Cubit<PostsState> {
     }, (unit) async {
       getPosts();
       emit(PostsState.postAdded());
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 5));
       emit(PostsState.postsLoaded());
     });
   }

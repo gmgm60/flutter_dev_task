@@ -76,7 +76,10 @@ class LoginPage extends StatelessWidget {
                       textColor: Colors.white),
                   BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
                     return state.maybeWhen(
-                      loading: ()=> const LinearProgressIndicator(),
+                      loading: ()=> const Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: LinearProgressIndicator(),
+                      ),
                       login: (){
                         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                           AutoRouter.of(context).popUntilRoot();
@@ -85,22 +88,48 @@ class LoginPage extends StatelessWidget {
                       },
                       orElse: () => const SizedBox.shrink(),
                     );
-
                   }),
                 ],
               ),
             ),
             const OrDivider(),
             const SizedBox(height: 30),
-            Text(LocaleKeys.ifYouDontHaveAnAccountRegisterNow.tr()),
-            CustomElevatedButton(
-                radios: 10,
-                onTap: () async {
+            Text(LocaleKeys.ifYouDontHaveAnAccountRegisterNow.tr(),style: Theme.of(context).textTheme.bodyText2,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+              child: OutlinedButton(
+                onPressed: () async {
                   AutoRouter.of(context).navigate(RegisterRoute());
                 },
-                text: LocaleKeys.registerNewAccount,
-                backGroundColor: mainBackground,
-                textColor: Colors.deepOrange),
+                style: OutlinedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      10,
+                    ),
+                  ),
+                   primary: buttonBackground,
+                  // backgroundColor: Colors.red.shade100,
+                //  fixedSize: Size(200, 100),
+                  side: const BorderSide(
+                    width: 1.0,
+                    color: buttonBackground,
+                  ),
+                ),
+                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.person_add_alt),
+                    const SizedBox(width: 5,height: 45,),
+                    Text(
+                      LocaleKeys.registerNewAccount.tr(),
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       )),

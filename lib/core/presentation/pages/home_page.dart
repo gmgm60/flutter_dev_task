@@ -26,7 +26,9 @@ class HomePage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(titles[tabController.index].tr()),
-            bottom:TabBar(controller: tabController, tabs:  [
+            bottom:TabBar(
+               // indicatorColor: Colors.green,
+                controller: tabController, tabs:  [
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(LocaleKeys.home.tr()),

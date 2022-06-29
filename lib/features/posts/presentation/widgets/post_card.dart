@@ -84,10 +84,25 @@ class PostCard extends StatelessWidget {
                 ),
               ],
             ),
-            CachedNetworkImage(imageUrl: post.imageUrl),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(post.text),
+              padding: const EdgeInsets.all(10.0),
+              child: CachedNetworkImage(
+                imageUrl: post.imageUrl,
+                imageBuilder: (context, imageProvider) => Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: imageProvider,fit: BoxFit.fill),
+                   borderRadius: const BorderRadius.all(Radius.circular(8))
+                  ),
+
+                ),
+                placeholder: (context, url) => const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 20),
+              child: Text(post.text,style: Theme.of(context).textTheme.bodyText1),
             ),
           ],
         ),
