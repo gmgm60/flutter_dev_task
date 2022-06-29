@@ -25,7 +25,7 @@
   "publish": "Publish",
   "cancel":"Cancel",
   "logout": "Logout",
-
+  "forget_password": "Forget password?",
   "validation": {
     "invalid_password": "Invalid password.",
     "invalid_login_info": "Invalid Login info!",

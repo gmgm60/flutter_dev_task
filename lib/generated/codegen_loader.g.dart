@@ -39,6 +39,7 @@ class CodegenLoader extends AssetLoader{
   "publish": "Publish",
   "cancel": "Cancel",
   "logout": "Logout",
+  "forget_password": "Forget password?",
   "validation": {
     "invalid_password": "Invalid password.",
     "invalid_login_info": "Invalid Login info!",
@@ -88,6 +89,7 @@ static const Map<String,dynamic> ar = {
   "publish": "نشر",
   "cancel": "تجاهل",
   "logout": "تسجيل خروج",
+  "forget_password": "نسيت كلمة المرور؟",
   "validation": {
     "invalid_password": "خطأ بكلمة المرور",
     "invalid_login_info": "بيانات الدخول خاطئة",

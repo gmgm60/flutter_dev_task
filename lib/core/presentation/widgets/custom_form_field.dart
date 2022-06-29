@@ -55,8 +55,8 @@ class _CustomFormFieldState extends State<CustomFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: widget.horizontalPadding, vertical: 10.0),
+        padding: EdgeInsets.only(
+            left: widget.horizontalPadding,right: widget.horizontalPadding, top: 30.0),
         child: TextFormField(
           onSaved: widget.onSaved,
           initialValue: widget.initValue,

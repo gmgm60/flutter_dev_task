@@ -65,6 +65,17 @@ class LoginPage extends StatelessWidget {
                           context.read<AuthCubit>().registerParam.password);
                     },
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                            onPressed: () {},
+                            child: Text(LocaleKeys.forget_password.tr(),style: Theme.of(context).textTheme.subtitle2,))
+                      ],
+                    ),
+                  ),
                   CustomElevatedButton(
                       radios: 10,
                       onTap: () async {
@@ -77,12 +88,13 @@ class LoginPage extends StatelessWidget {
                       textColor: Colors.white),
                   BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
                     return state.maybeWhen(
-                      loading: ()=> const Padding(
+                      loading: () => const Padding(
                         padding: EdgeInsets.all(10.0),
                         child: LinearProgressIndicator(),
                       ),
-                      login: (){
-                        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                      login: () {
+                        WidgetsBinding.instance
+                            .addPostFrameCallback((timeStamp) {
                           AutoRouter.of(context).popUntilRoot();
                         });
                         return const SizedBox.shrink();
@@ -95,9 +107,12 @@ class LoginPage extends StatelessWidget {
             ),
             const OrDivider(),
             const SizedBox(height: 30),
-            Text(LocaleKeys.ifYouDontHaveAnAccountRegisterNow.tr(),style: Theme.of(context).textTheme.bodyText2,),
+            Text(
+              LocaleKeys.ifYouDontHaveAnAccountRegisterNow.tr(),
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: OutlinedButton(
                 onPressed: () async {
                   AutoRouter.of(context).navigate(RegisterRoute());
@@ -108,25 +123,28 @@ class LoginPage extends StatelessWidget {
                       10,
                     ),
                   ),
-                   primary: buttonBackground,
+                  primary: buttonBackground,
                   // backgroundColor: Colors.red.shade100,
-                //  fixedSize: Size(200, 100),
+                  //  fixedSize: Size(200, 100),
                   side: const BorderSide(
                     width: 1.0,
                     color: buttonBackground,
                   ),
                 ),
-                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(Icons.person_add_alt),
-                    const SizedBox(width: 5,height: 45,),
+                    const SizedBox(
+                      width: 5,
+                      height: 45,
+                    ),
                     Text(
                       LocaleKeys.registerNewAccount.tr(),
                       style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
-
                   ],
                 ),
               ),

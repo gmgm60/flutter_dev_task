@@ -23,7 +23,7 @@
   "publish": "نشر",
   "cancel": "تجاهل",
   "logout": "تسجيل خروج",
-
+  "forget_password": "نسيت كلمة المرور؟",
   "validation": {
     "invalid_password": "خطأ بكلمة المرور",
     "invalid_login_info": "بيانات الدخول خاطئة",

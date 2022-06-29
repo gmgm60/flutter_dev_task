@@ -25,6 +25,7 @@ abstract class  LocaleKeys {
   static const publish = 'publish';
   static const cancel = 'cancel';
   static const logout = 'logout';
+  static const forget_password = 'forget_password';
   static const validation_invalid_password = 'validation.invalid_password';
   static const validation_invalid_login_info = 'validation.invalid_login_info';
   static const validation_invalid_register_email = 'validation.invalid_register_email';
