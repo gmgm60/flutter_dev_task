@@ -86,6 +86,24 @@ class AppDrawer extends StatelessWidget {
                     AutoRouter.of(context).pop();
                   },
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 3),
+                  child: Container(height: 1,color: Colors.black26),
+                ),
+                ListTile(
+                  leading: const Icon(
+                    Icons.logout,
+                  ),
+                  selected: true,
+                  title: Text(
+                    LocaleKeys.logout.tr(),
+                    style: const TextStyle(fontSize: 14),
+                  ),
+                  onTap: ()async {
+                   await context.read<AuthCubit>().logout();
+                    AutoRouter.of(context).popUntilRoot();
+                  },
+                ),
               ],
             ),
           ),

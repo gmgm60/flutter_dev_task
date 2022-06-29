@@ -36,7 +36,8 @@ class CodegenLoader extends AssetLoader{
   "settings": "Settings",
   "editProfile": "modify my data",
   "publish": "Publish",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "logout": "Logout"
 };
 static const Map<String,dynamic> ar = {
   "createAccount": "إنشاء حساب",
@@ -60,7 +61,8 @@ static const Map<String,dynamic> ar = {
   "settings": "الإعدادات",
   "editProfile": "تعديل بياناتي",
   "publish": "نشر",
-  "cancel": "تجاهل"
+  "cancel": "تجاهل",
+  "logout": "تسجيل خروج"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ar": ar};
 }

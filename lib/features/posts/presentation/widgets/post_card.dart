@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dev_task/core/constants/colors.dart';
@@ -83,7 +84,7 @@ class PostCard extends StatelessWidget {
                 ),
               ],
             ),
-            Image.network(post.imageUrl),
+            CachedNetworkImage(imageUrl: post.imageUrl),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(post.text),

@@ -22,7 +22,8 @@
   "settings": "الإعدادات",
   "editProfile": "تعديل بياناتي",
   "publish": "نشر",
-  "cancel":"تجاهل"
+  "cancel":"تجاهل",
+  "logout": "تسجيل خروج"
 
 
 }

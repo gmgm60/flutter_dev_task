@@ -42,6 +42,7 @@ class AuthCubit extends Cubit<AuthState> {
     }, (user) {
       if (user != null) {
         _logger.v("saved user is : $user");
+        this.user = user;
         emit(AuthState.login());
       } else {
         _logger.v("not login");

@@ -22,5 +22,6 @@
   "settings": "Settings",
   "editProfile": "modify my data",
   "publish": "Publish",
-  "cancel":"Cancel"
+  "cancel":"Cancel",
+  "logout": "Logout"
 }

@@ -23,5 +23,6 @@ abstract class  LocaleKeys {
   static const editProfile = 'editProfile';
   static const publish = 'publish';
   static const cancel = 'cancel';
+  static const logout = 'logout';
 
 }
