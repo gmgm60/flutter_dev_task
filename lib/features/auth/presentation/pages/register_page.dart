@@ -113,7 +113,7 @@ class RegisterPage extends StatelessWidget {
                           context.read<AuthCubit>().registerParam.lastName);
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   CustomElevatedButton(
                       radios: 10,
                       onTap: () async {

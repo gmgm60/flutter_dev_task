@@ -17,14 +17,14 @@ import 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   final Logger _logger;
   final LoginUseCase _loginUseCase;
-  final LoginParam loginParam = const LoginParam(email: 'gmgm@gm.gm', password: '123456');
+  final LoginParam loginParam = const LoginParam(email: '', password: '');
   final RegisterUseCase _registerUseCase;
   final RegisterParam registerParam = RegisterParam(
-    firstName: 'Mohamed',
-    lastName: 'Gamal',
-    email: 'gmgm@gm.gm',
-    password: '123456',
-    passwordConfirmation: '123456',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
   );
   final LogoutUseCase _logoutUseCase;
   final IsLoginUseCase _isLoginUseCase;
