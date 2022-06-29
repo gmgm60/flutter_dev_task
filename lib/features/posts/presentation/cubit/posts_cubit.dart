@@ -94,10 +94,14 @@ class PostsCubit extends Cubit<PostsState> {
     }
 
     posts[index] = post.copyWith(likes: likes);
+    final favIndex = favPosts.indexOf(post);
+    if(favIndex > -1) favPosts[favIndex] = post.copyWith(likes: likes);
+
     emit(PostsState.loading());
     final result = await _postLikeUseCase(posts[index]);
     result.fold((failure) {
       posts[index] = post;
+      if(favIndex > -1) favPosts[favIndex] = post;
       emit(PostsState.error(message: failure.message));
     }, (unit) {
       emit(PostsState.postsLoaded());
@@ -105,7 +109,7 @@ class PostsCubit extends Cubit<PostsState> {
   }
 
   Future<void> addToFav({required Post post, required String userId}) async {
-    final index = posts.indexOf(post);
+    final postsIndex = posts.indexOf(post);
     final List<String> savedUsers = [];
     savedUsers.addAll(post.savedUsers);
     if (savedUsers.contains(userId)) {
@@ -114,11 +118,14 @@ class PostsCubit extends Cubit<PostsState> {
       savedUsers.add(userId);
     }
 
-    posts[index] = post.copyWith(savedUsers: savedUsers);
+    posts[postsIndex] = post.copyWith(savedUsers: savedUsers);
+    final favIndex = favPosts.indexOf(post);
+    if(favIndex > -1) favPosts[favIndex] = post.copyWith(savedUsers: savedUsers);
     emit(PostsState.loading());
-    final result = await _postLikeUseCase(posts[index]);
+    final result = await _postLikeUseCase(posts[postsIndex]);
     result.fold((failure) {
-      posts[index] = post;
+      posts[postsIndex] = post;
+      if(favIndex > -1) favPosts[favIndex] = post;
       emit(PostsState.error(message: failure.message));
     }, (unit) {
       emit(PostsState.postsLoaded());
