@@ -50,6 +50,7 @@ class CustomFormField extends StatefulWidget {
   @override
   State<CustomFormField> createState() => _CustomFormFieldState();
 }
+
 class _CustomFormFieldState extends State<CustomFormField> {
   @override
   Widget build(BuildContext context) {
@@ -66,12 +67,12 @@ class _CustomFormFieldState extends State<CustomFormField> {
           validator: widget.validation,
           onChanged: widget.onChanged,
           textInputAction: TextInputAction.done,
-          //inputFormatters: <TextInputFormatter>[LengthLimitingTextInputFormatter(4,maxLengthEnforcement: MaxLengthEnforcement.none)],
+          style: const TextStyle(color: tileTextColor),
           decoration: InputDecoration(
-                        filled: true,
+            filled: true,
             fillColor: textFormBackground,
             contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             labelText: widget.textLabel.tr(),
             alignLabelWithHint: true,
             prefixIcon: widget.prefix != null
@@ -79,18 +80,20 @@ class _CustomFormFieldState extends State<CustomFormField> {
                 : null,
             suffixIcon: widget.showSuffix
                 ? IconButton(
-                onPressed: () {
-                  widget.isPass.isPassword = !widget.isPass.isPassword;
-                  setState(() {});
-                },
-                icon: Icon(widget.isPass.isPassword
-                    ? Icons.visibility
-                    : Icons.visibility_off))
+                    onPressed: () {
+                      widget.isPass.isPassword = !widget.isPass.isPassword;
+                      setState(() {});
+                    },
+                    icon: Icon(widget.isPass.isPassword
+                        ? Icons.visibility
+                        : Icons.visibility_off))
                 : null,
-            border: OutlineInputBorder(borderSide: BorderSide(color: textFormBackground, width: 0.0),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: textFormBackground, width: 0.0),
               borderRadius: BorderRadius.all(Radius.circular(widget.radius)),
             ),
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: textFormBackground, width: 0.0),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: textFormBackground, width: 0.0),
               borderRadius: BorderRadius.all(Radius.circular(widget.radius)),
             ),
           ),

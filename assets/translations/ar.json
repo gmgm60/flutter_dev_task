@@ -1,17 +1,16 @@
 {
+  "changeLang": "English",
   "createAccount": "إنشاء حساب",
   "email": "البريد الالكترونى",
   "password": "كلمة المرور",
   "passwordConfirmation": "تأكيد كلمة المرور",
   "firstName": "الاسم الأول",
   "lastName": "الاسم الأخير",
-
   "login": "تسجيل دخول",
   "forgetPassword": "هل نسيت كلمة السر؟",
   "or": "أو",
   "ifYouDontHaveAnAccountRegisterNow": "إذا لم يكن لديك حسام قم بالتسجيل",
   "registerNewAccount": "تسجيل حساب جديد",
-
   "uploadImage": "رفع صورة",
   "addComment": "أكتب تعليقا حول الصورة",
   "postText": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص",
@@ -22,8 +21,6 @@
   "settings": "الإعدادات",
   "editProfile": "تعديل بياناتي",
   "publish": "نشر",
-  "cancel":"تجاهل",
+  "cancel": "تجاهل",
   "logout": "تسجيل خروج"
-
-
 }

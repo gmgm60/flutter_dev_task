@@ -5,6 +5,8 @@ import 'package:flutter_dev_task/core/presentation/routes/router.gr.dart';
 import 'package:flutter_dev_task/core/presentation/widgets/app_drawer.dart';
 import 'package:flutter_dev_task/generated/locale_keys.g.dart';
 
+import '../widgets/change_lang.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -25,7 +27,12 @@ class HomePage extends StatelessWidget {
           (BuildContext context, Widget child, TabController tabController) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(titles[tabController.index].tr()),
+            title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(titles[tabController.index].tr()),
+                const ChangeLang(),
+              ],
+            ),
             bottom:TabBar(
                // indicatorColor: Colors.green,
                 controller: tabController, tabs:  [
@@ -46,3 +53,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+

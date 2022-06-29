@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dev_task/core/constants/colors.dart';
 import 'package:flutter_dev_task/core/presentation/routes/router.gr.dart';
+import 'package:flutter_dev_task/core/presentation/widgets/change_lang.dart';
 import 'package:flutter_dev_task/core/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter_dev_task/core/presentation/widgets/custom_form_field.dart';
 import 'package:flutter_dev_task/core/presentation/widgets/or_divider.dart';
@@ -130,6 +131,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
+            const ChangeLang(),
           ],
         ),
       )),

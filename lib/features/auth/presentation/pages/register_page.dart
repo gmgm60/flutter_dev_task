@@ -8,6 +8,7 @@ import 'package:flutter_dev_task/core/presentation/widgets/custom_form_field.dar
 import 'package:flutter_dev_task/features/auth/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:flutter_dev_task/generated/locale_keys.g.dart';
 
+import '../../../../core/presentation/widgets/change_lang.dart';
 import '../validations/validations.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -125,6 +126,7 @@ class RegisterPage extends StatelessWidget {
                 ],
               ),
             ),
+            const ChangeLang(),
           ],
         ),
       )),

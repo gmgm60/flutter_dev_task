@@ -15,6 +15,7 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en = {
+  "changeLang": "عربى",
   "createAccount": "Create Account",
   "email": "Email",
   "password": "Password",
@@ -40,6 +41,7 @@ class CodegenLoader extends AssetLoader{
   "logout": "Logout"
 };
 static const Map<String,dynamic> ar = {
+  "changeLang": "English",
   "createAccount": "إنشاء حساب",
   "email": "البريد الالكترونى",
   "password": "كلمة المرور",

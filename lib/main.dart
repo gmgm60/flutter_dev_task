@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dev_task/core/presentation/theme.dart';
 import 'package:flutter_dev_task/di/injectable.dart';
 import 'package:flutter_dev_task/features/auth/presentation/cubit/auth_cubit/auth_cubit.dart';
-import 'package:flutter_dev_task/features/auth/presentation/pages/start_page.dart';
 import 'package:flutter_dev_task/features/posts/presentation/cubit/posts_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/presentation/routes/router.gr.dart';
 import 'firebase_options.dart';
@@ -19,12 +19,15 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
  await configureInjection();
-  runApp(const MyApp());
+ SharedPreferences preferences = await SharedPreferences.getInstance();
+ String locale = preferences.getString('locale') ?? "ar";
+  runApp( MyApp(locale: locale));
 }
 
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final String locale;
+  const MyApp({Key? key, required this.locale}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -41,7 +44,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('ar')],
-        startLocale: const Locale('ar'),
+        startLocale: Locale(widget.locale),
         path: 'assets/translations',
         fallbackLocale: const Locale('en'),
         assetLoader: const CodegenLoader(),
