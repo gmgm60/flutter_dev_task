@@ -17,7 +17,7 @@ import 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   final Logger _logger;
   final LoginUseCase _loginUseCase;
-  final LoginParam loginParam = const LoginParam(email: '', password: '');
+  final LoginParam loginParam = LoginParam(email: 'gmgm@gm.gm', password: '123456');
   final RegisterUseCase _registerUseCase;
   final RegisterParam registerParam = RegisterParam(
     firstName: '',

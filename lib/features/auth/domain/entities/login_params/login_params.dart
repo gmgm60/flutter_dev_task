@@ -1,9 +1,14 @@
 class LoginParam {
-  final String email;
-  final String password;
+  String email;
+  String password;
 
-  const LoginParam({
+  LoginParam({
     required this.email,
     required this.password,
   });
+
+  @override
+  String toString() {
+    return 'LoginParam{email: $email, password: $password}';
+  }
 }

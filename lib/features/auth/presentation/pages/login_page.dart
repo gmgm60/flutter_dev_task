@@ -45,9 +45,9 @@ class LoginPage extends StatelessWidget {
                     validation: validateEmailAddress,
                     radius: 10,
                     onChanged: (String? email) {
-                      context.read<AuthCubit>().registerParam.email =
+                      context.read<AuthCubit>().loginParam.email =
                           email ?? "";
-                      debugPrint(context.read<AuthCubit>().registerParam.email);
+
                     },
                   ),
                   CustomFormField(
@@ -59,10 +59,9 @@ class LoginPage extends StatelessWidget {
                     isPassword: true,
                     showSuffix: true,
                     onChanged: (String? password) {
-                      context.read<AuthCubit>().registerParam.password =
+                      context.read<AuthCubit>().loginParam.password =
                           password ?? "";
-                      debugPrint(
-                          context.read<AuthCubit>().registerParam.password);
+
                     },
                   ),
                   Padding(
@@ -80,6 +79,8 @@ class LoginPage extends StatelessWidget {
                       radios: 10,
                       onTap: () async {
                         if (_formKey.currentState!.validate()) {
+                          debugPrint(context.read<AuthCubit>().loginParam.email);
+                          debugPrint(context.read<AuthCubit>().loginParam.password);
                           await context.read<AuthCubit>().login();
                         }
                       },
