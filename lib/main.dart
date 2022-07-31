@@ -7,7 +7,6 @@ import 'package:flutter_dev_task/core/presentation/theme.dart';
 import 'package:flutter_dev_task/di/injectable.dart';
 import 'package:flutter_dev_task/features/auth/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:flutter_dev_task/features/posts/presentation/cubit/posts_cubit.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/presentation/routes/router.gr.dart';
 import 'firebase_options.dart';
@@ -19,22 +18,20 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
  await configureInjection();
- SharedPreferences preferences = await SharedPreferences.getInstance();
- String locale = preferences.getString('locale') ?? "ar";
-  runApp( MyApp(locale: locale));
+ //SharedPreferences preferences = await SharedPreferences.getInstance();
+ await EasyLocalization.ensureInitialized();
+ //String locale = preferences.getString('locale') ?? "ar";
+  runApp( const MyApp());
 }
 
+final _appRouter = AppRouter();
+class MyApp extends StatelessWidget {
+ // final String locale;
 
-class MyApp extends StatefulWidget {
-  final String locale;
-  const MyApp({Key? key, required this.locale}) : super(key: key);
+  const MyApp({Key? key,
+    // required this.locale
+  }) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -44,15 +41,15 @@ class _MyAppState extends State<MyApp> {
       ],
       child: EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('ar')],
-        startLocale: Locale(widget.locale),
+        startLocale: const Locale('ar'),
         path: 'assets/translations',
         fallbackLocale: const Locale('en'),
         assetLoader: const CodegenLoader(),
         child: Builder(
           builder: (context) {
             return MaterialApp.router(
-              routerDelegate: AutoRouterDelegate(appRouter),
-              routeInformationParser: appRouter.defaultRouteParser(),
+              routerDelegate: AutoRouterDelegate(_appRouter),
+              routeInformationParser: _appRouter.defaultRouteParser(),
               locale: context.locale,
               supportedLocales: context.supportedLocales,
               localizationsDelegates: context.localizationDelegates,

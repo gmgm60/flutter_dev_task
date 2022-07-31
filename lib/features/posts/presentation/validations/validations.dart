@@ -1,4 +1,3 @@
-import '../../../../generated/locale_keys.g.dart';
 
 String? validateEmailAddress(String? input) {
   const emailRegex =

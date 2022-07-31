@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dev_task/features/auth/data/data_sources/remote/auth_firebase_service.dart';
 import 'package:flutter_dev_task/features/auth/data/models/register/register_model.dart';

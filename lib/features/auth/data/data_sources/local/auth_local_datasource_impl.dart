@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/data/throw_app_exception.dart';
 import '../../../domain/data/data_sources/local/auth_local_datasource.dart';
-import '../../../domain/data/data_sources/remote/auth_remote_datasource.dart';
 import '../../models/user/user_model.dart';
 import 'auth_firebase_local_service.dart';
 

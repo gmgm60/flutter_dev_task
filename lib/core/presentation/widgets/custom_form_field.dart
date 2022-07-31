@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
 
-class IsPass {
-  bool isPassword = false;
-
-  IsPass();
-}
+// class IsPass {
+//   bool isPassword = false;
+//
+//   IsPass();
+// }
 
 class CustomFormField extends StatefulWidget {
   final TextInputType textType;
@@ -16,8 +16,8 @@ class CustomFormField extends StatefulWidget {
   final String textLabel;
   final TextEditingController? controller;
 
-  // bool isPassword;
-  final IsPass isPass = IsPass();
+  final bool isPassword;
+  // final IsPass isPass = IsPass();
   final String? Function(String?)? validation;
   final Function(String? str)? onChanged;
   final Function(String? str)? onSaved;
@@ -27,13 +27,13 @@ class CustomFormField extends StatefulWidget {
   final int? minLines;
   final String initValue;
 
-  CustomFormField({
+ const CustomFormField({
     Key? key,
     required this.textLabel,
     this.showSuffix = false,
     this.prefix,
     this.controller,
-    bool isPassword = false,
+    this.isPassword = false,
     required this.textType,
     required this.validation,
     this.onChanged,
@@ -43,15 +43,19 @@ class CustomFormField extends StatefulWidget {
     this.minLines,
     this.initValue = "",
     this.onSaved,
-  }) : super(key: key) {
-    isPass.isPassword = isPassword;
-  }
+  }) : super(key: key);
 
   @override
   State<CustomFormField> createState() => _CustomFormFieldState();
 }
 
 class _CustomFormFieldState extends State<CustomFormField> {
+  bool isPassword=false;
+  @override
+  void initState() {
+    isPassword = widget.isPassword;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -63,7 +67,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: widget.textType,
           controller: widget.controller,
-          obscureText: widget.isPass.isPassword,
+          obscureText: isPassword,
           validator: widget.validation,
           onChanged: widget.onChanged,
           textInputAction: TextInputAction.done,
@@ -81,10 +85,10 @@ class _CustomFormFieldState extends State<CustomFormField> {
             suffixIcon: widget.showSuffix
                 ? IconButton(
                     onPressed: () {
-                      widget.isPass.isPassword = !widget.isPass.isPassword;
+                      isPassword = !isPassword;
                       setState(() {});
                     },
-                    icon: Icon(widget.isPass.isPassword
+                    icon: Icon(isPassword
                         ? Icons.visibility
                         : Icons.visibility_off))
                 : null,

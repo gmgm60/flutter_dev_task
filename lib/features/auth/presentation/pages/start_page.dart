@@ -2,8 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dev_task/core/presentation/routes/router.gr.dart';
-import 'package:flutter_dev_task/features/auth/presentation/pages/login_page.dart';
-import 'package:flutter_dev_task/features/auth/presentation/pages/register_page.dart';
 
 import '../cubit/auth_cubit/auth_cubit.dart';
 import '../cubit/auth_cubit/auth_state.dart';
@@ -55,7 +53,7 @@ class StartPage extends StatelessWidget {
             );
           },
         );
-        return Scaffold(
+        return const Scaffold(
           body: Text('start'),
         );
       },

@@ -48,10 +48,14 @@ class _PostsPageState extends State<PostsPage> {
               ),
             );
           }
-          return ListView.builder(
-              itemCount: postsCubit.posts.length,
-              itemBuilder: (context, index) =>
-                  PostCard(post: postsCubit.posts[index]));
+          return RefreshIndicator(
+            onRefresh: () async{  },
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+                itemCount: postsCubit.posts.length,
+                itemBuilder: (context, index) =>
+                    PostCard(post: postsCubit.posts[index])),
+          );
         },
       ),
     );
